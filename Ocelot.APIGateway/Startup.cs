@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
+using Ocelot.Provider.Consul;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,9 @@ namespace Ocelot.APIGateway
         public void ConfigureServices(IServiceCollection services)
         {
             // 添加ocelot服務
-            services.AddOcelot();
+            services.AddOcelot()
+                // 添加consul支持
+                .AddConsul();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
