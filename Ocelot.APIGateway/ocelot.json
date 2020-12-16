@@ -34,7 +34,7 @@
         // 發生錯誤的次數
         "ExceptionsAllowedBeforeBreaking": 3,
         // 熔斷時間
-        "DurationOfBreak": 10000,
+        "DurationOfBreak": 1000,
         // 超時時間
         "TimeoutValue": 5000
       }
@@ -73,7 +73,46 @@
         // 發生錯誤的次數
         "ExceptionsAllowedBeforeBreaking": 3,
         // 熔斷時間
-        "DurationOfBreak": 10000,
+        "DurationOfBreak": 1000,
+        // 超時時間
+        "TimeoutValue": 5000
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/orders/{url}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/orders/{url}",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "ServiceName": "OrderService",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      // 緩存
+      "FileCacheOptions": {
+        // 緩存的過期時間
+        "TtlSeconds": 5,
+        // 緩存區名稱
+        "Region": "regionname"
+      },
+      // 限流
+      "RateLimitOptions": {
+        // 客戶端的白名單
+        "ClientWhitelist": [ "SuperClient" ],
+        // 是否限流
+        "EnableRateLimiting": true,
+        // 限流的單位時間
+        "Period": "5s",
+        // 客戶端達到請求上限多少秒可以重試
+        "PeriodTimespan": 2,
+        // 客戶端在定義的時間內可以發出的最大請求數
+        "Limit": 2
+      },
+      // 超時/熔斷
+      "QoSOptions": {
+        // 發生錯誤的次數
+        "ExceptionsAllowedBeforeBreaking": 3,
+        // 熔斷時間
+        "DurationOfBreak": 1000,
         // 超時時間
         "TimeoutValue": 5000
       }
