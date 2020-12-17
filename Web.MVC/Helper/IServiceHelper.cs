@@ -8,13 +8,13 @@ namespace Web.MVC.Helper
         /// 獲取產品資料
         /// </summary>
         /// <returns></returns>
-        Task<string> GetProduct();
+        Task<string> GetProduct(string accessToken);
 
         /// <summary>
         /// 獲取訂單資料
         /// </summary>
         /// <returns></returns>
-        Task<string> GetOrder();
+        Task<string> GetOrder(string accessToken);
 
         /// <summary>
         /// 獲取服務列表
